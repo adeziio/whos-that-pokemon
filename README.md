@@ -23,16 +23,16 @@ It uses **Pokémon names, artwork, and music**, which are **intellectual propert
 ## Demo
 
 ### Images
-<img width="180" alt="start" src="https://github.com/user-attachments/assets/16660f16-c29a-445f-8455-d0bd7509bb36" />
-<img width="180" alt="gameplay1" src="https://github.com/user-attachments/assets/f8869b28-1778-4cb0-bc56-0849badb58df" />
-<img width="180" alt="gameplay2" src="https://github.com/user-attachments/assets/9e1d42b0-12b2-4a08-bc5f-778485ab6197" />
-<img width="180" alt="gameplay3" src="https://github.com/user-attachments/assets/7f8c409e-8398-4996-a2a7-7027ca67c660" />
-<img width="180" alt="gameplay4" src="https://github.com/user-attachments/assets/f97fd609-6d02-4e73-ab64-7717843aba47" />
-<img width="180" alt="gameplay5" src="https://github.com/user-attachments/assets/66e43037-7280-4d50-9818-c844b846a35e" />
-<img width="180" alt="gameplay6" src="https://github.com/user-attachments/assets/01f29517-490d-4851-ba00-e2f6d514bd78" />
-<img width="180" alt="gameplay7" src="https://github.com/user-attachments/assets/7b71374b-b986-4ee1-ae45-321290298ef3" />
-<img width="180" alt="gameplay8" src="https://github.com/user-attachments/assets/e6402845-fa0d-4d2e-8608-816241913b45" />
-<img width="180" alt="end" src="https://github.com/user-attachments/assets/d463f215-de23-4028-8735-6d7ffb4c84a3" />
+<img width="350" alt="start" src="https://github.com/user-attachments/assets/16660f16-c29a-445f-8455-d0bd7509bb36" />
+<img width="350" alt="gameplay1" src="https://github.com/user-attachments/assets/f8869b28-1778-4cb0-bc56-0849badb58df" />
+<img width="350" alt="gameplay2" src="https://github.com/user-attachments/assets/9e1d42b0-12b2-4a08-bc5f-778485ab6197" />
+<img width="350" alt="gameplay3" src="https://github.com/user-attachments/assets/7f8c409e-8398-4996-a2a7-7027ca67c660" />
+<img width="350" alt="gameplay4" src="https://github.com/user-attachments/assets/f97fd609-6d02-4e73-ab64-7717843aba47" />
+<img width="350" alt="gameplay5" src="https://github.com/user-attachments/assets/66e43037-7280-4d50-9818-c844b846a35e" />
+<img width="350" alt="gameplay6" src="https://github.com/user-attachments/assets/01f29517-490d-4851-ba00-e2f6d514bd78" />
+<img width="350" alt="gameplay7" src="https://github.com/user-attachments/assets/7b71374b-b986-4ee1-ae45-321290298ef3" />
+<img width="350" alt="gameplay8" src="https://github.com/user-attachments/assets/e6402845-fa0d-4d2e-8608-816241913b45" />
+<img width="350" alt="end" src="https://github.com/user-attachments/assets/d463f215-de23-4028-8735-6d7ffb4c84a3" />
 
 
 ### Video
