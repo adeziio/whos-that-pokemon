@@ -23,7 +23,7 @@ It uses **Pokémon names, artwork, and music**, which are **intellectual propert
 ## Demo
 
 ### Images
-<img src="assets/demo/images/start1.PNG" width="200"><img src="assets/demo/images/gameplay1.PNG" width="200"><img src="assets/demo/images/gameplay2.PNG" width="200"><img src="assets/demo/images/gameplay3.PNG" width="200"><img src="assets/demo/images/gameplay4.PNG" width="200"><img src="assets/demo/images/gameplay5.PNG" width="200"><img src="assets/demo/images/gameplay6.PNG" width="200"><img src="assets/demo/images/gameplay7.PNG" width="200"><img src="assets/demo/images/gameplay8.PNG" width="200"><img src="assets/demo/images/end1.PNG" width="200">
+
 
 ### Video
 
