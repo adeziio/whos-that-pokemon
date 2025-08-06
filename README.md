@@ -20,19 +20,18 @@ It uses **Pokémon names, artwork, and music**, which are **intellectual propert
 
 ---
 
-## Screenshots
+## Demo
 
-<img width="100" height="200" alt="IMG_5220" src="https://github.com/user-attachments/assets/9253db04-e828-468d-8c18-eff7fa57453f" />
-<img width="100" height="200" alt="IMG_5228" src="https://github.com/user-attachments/assets/18f0185c-69f5-460b-b8f6-86bd2f959333" />
-<img width="100" height="200" alt="IMG_5227" src="https://github.com/user-attachments/assets/cd10a604-e115-4bdc-91fc-211469d1e7e9" />
-<img width="100" height="200" alt="IMG_5226" src="https://github.com/user-attachments/assets/202fac00-e2cd-4435-94f5-4cdb852f746f" />
-<img width="100" height="200" alt="IMG_5225" src="https://github.com/user-attachments/assets/b22c2f57-f080-40a6-a34b-53d13add2851" />
-<img width="100" height="200" alt="IMG_5222" src="https://github.com/user-attachments/assets/af03905c-9b87-466c-9658-9e115189f9a5" />
-<img width="100" height="200" alt="IMG_5221" src="https://github.com/user-attachments/assets/83e9ef34-c1d2-48b6-b797-256cbbccedd2" />
+### Images
+<img src="assets/demo/images/start1.PNG" width="200"><img src="assets/demo/images/gameplay1.PNG" width="200"><img src="assets/demo/images/gameplay2.PNG" width="200"><img src="assets/demo/images/gameplay3.PNG" width="200"><img src="assets/demo/images/gameplay4.PNG" width="200"><img src="assets/demo/images/gameplay5.PNG" width="200"><img src="assets/demo/images/gameplay6.PNG" width="200"><img src="assets/demo/images/gameplay7.PNG" width="200"><img src="assets/demo/images/gameplay8.PNG" width="200"><img src="assets/demo/images/end1.PNG" width="200">
 
-## Videos
+### Video
 
-https://github.com/user-attachments/assets/b325aa8d-1e04-496b-beb0-9369acdc030c
+https://github.com/user-attachments/assets/c4cb158e-ebc9-43d5-a082-2b8c18e6e1f1
+
+https://github.com/user-attachments/assets/f6184476-1ba8-4957-9c50-c1bb971eab96
+
+https://github.com/user-attachments/assets/9391e0e4-f99a-445c-8f9e-3ccb1b129c72
 
 ## Getting Started
 
