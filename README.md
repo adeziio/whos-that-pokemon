@@ -27,8 +27,6 @@ It uses **Pokémon names, artwork, and music**, which are **intellectual propert
 <img width="100" height="200" alt="IMG_5227" src="https://github.com/user-attachments/assets/cd10a604-e115-4bdc-91fc-211469d1e7e9" />
 <img width="100" height="200" alt="IMG_5226" src="https://github.com/user-attachments/assets/202fac00-e2cd-4435-94f5-4cdb852f746f" />
 <img width="100" height="200" alt="IMG_5225" src="https://github.com/user-attachments/assets/b22c2f57-f080-40a6-a34b-53d13add2851" />
-<img width="100" height="200" alt="IMG_5224" src="https://github.com/user-attachments/assets/d3cc4b61-3a1e-4e5d-8f7f-b40fde3eb54e" />
-<img width="100" height="200" alt="IMG_5223" src="https://github.com/user-attachments/assets/11872074-c1ca-4925-a1c4-751d6d815248" />
 <img width="100" height="200" alt="IMG_5222" src="https://github.com/user-attachments/assets/af03905c-9b87-466c-9658-9e115189f9a5" />
 <img width="100" height="200" alt="IMG_5221" src="https://github.com/user-attachments/assets/83e9ef34-c1d2-48b6-b797-256cbbccedd2" />
 
