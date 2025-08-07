@@ -10,6 +10,7 @@ import Settings from './components/Settings';
 import Back from './components/Back';
 import Pokeball from './components/Pokeball';
 import Masterball from './components/Masterball';
+import RegionBall from './components/RegionBall';
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -200,7 +201,7 @@ export default function App() {
         <View style={styles.pokeballRow}>
           {(['Kanto', 'Johto', 'Hoenn'] as Region[]).map((gen) => (
             <View key={gen} style={{ alignItems: 'center' }}>
-              <Pokeball onPress={() => {
+              <RegionBall region={gen} onPress={() => {
                 setRegion(gen);
                 setMode(isExplore ? 'explore' : 'collection');
                 !isMuted && playClickSound();
