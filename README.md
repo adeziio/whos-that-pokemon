@@ -23,25 +23,24 @@ It uses **Pokémon names, artwork, and music**, which are **intellectual propert
 ## Demo
 
 ### Images
-<img width="350" alt="start" src="https://github.com/user-attachments/assets/16660f16-c29a-445f-8455-d0bd7509bb36" />
-<img width="350" alt="gameplay1" src="https://github.com/user-attachments/assets/f8869b28-1778-4cb0-bc56-0849badb58df" />
-<img width="350" alt="gameplay2" src="https://github.com/user-attachments/assets/9e1d42b0-12b2-4a08-bc5f-778485ab6197" />
-<img width="350" alt="gameplay3" src="https://github.com/user-attachments/assets/7f8c409e-8398-4996-a2a7-7027ca67c660" />
-<img width="350" alt="gameplay4" src="https://github.com/user-attachments/assets/f97fd609-6d02-4e73-ab64-7717843aba47" />
-<img width="350" alt="gameplay5" src="https://github.com/user-attachments/assets/66e43037-7280-4d50-9818-c844b846a35e" />
-<img width="350" alt="gameplay6" src="https://github.com/user-attachments/assets/01f29517-490d-4851-ba00-e2f6d514bd78" />
-<img width="350" alt="gameplay7" src="https://github.com/user-attachments/assets/7b71374b-b986-4ee1-ae45-321290298ef3" />
-<img width="350" alt="gameplay8" src="https://github.com/user-attachments/assets/e6402845-fa0d-4d2e-8608-816241913b45" />
-<img width="350" alt="end" src="https://github.com/user-attachments/assets/d463f215-de23-4028-8735-6d7ffb4c84a3" />
 
+![Gameplay](https://github.com/user-attachments/assets/62401907-483e-40ac-8b96-8795bf89ec4c)
+![Collection](https://github.com/user-attachments/assets/131630d0-52d6-4a1e-98b0-77bce7a8be1c)
+
+<img width="350" alt="Start" src="https://github.com/user-attachments/assets/8fa50473-d2ad-40e1-9530-fe6b878bc71b" />
+<img width="350" alt="Region" src="https://github.com/user-attachments/assets/a027dcf3-9ba4-4d29-a5d0-93596010d382" />
+<img width="350" alt="Guess" src="https://github.com/user-attachments/assets/fe59e41f-ce45-4a97-8c2b-07011c62342a" />
+<img width="350" alt="New" src="https://github.com/user-attachments/assets/d39f840f-d239-4ecf-98a3-d4abde8d430e" />
+<img width="350" alt="NotNew" src="https://github.com/user-attachments/assets/3ed6c421-ab81-405a-8b40-99534bb92c43" />
+<img width="350" alt="Incorrect" src="https://github.com/user-attachments/assets/42af1366-51c2-47c9-ad7b-bbd7616405fe" />
+<img width="350" alt="Gameover" src="https://github.com/user-attachments/assets/802880f9-7e67-4792-ae63-6efffe761a05" />
+<img width="350" alt="Kanto" src="https://github.com/user-attachments/assets/be5f05ab-c5ad-4d7d-84f0-2c8aae7f78c6" />
+<img width="350" alt="Johto" src="https://github.com/user-attachments/assets/04b2b9bc-8af2-4ca7-9f36-1c2509b0ae48" />
+<img width="350" alt="Hoenn" src="https://github.com/user-attachments/assets/6f0dcf8d-4a6a-47da-80da-abbb5c4c18ad" />
 
 ### Video
 
-https://github.com/user-attachments/assets/c4cb158e-ebc9-43d5-a082-2b8c18e6e1f1
-
-https://github.com/user-attachments/assets/f6184476-1ba8-4957-9c50-c1bb971eab96
-
-https://github.com/user-attachments/assets/9391e0e4-f99a-445c-8f9e-3ccb1b129c72
+https://github.com/user-attachments/assets/96f5e571-e1b7-42f1-ba7d-efd9b43efd09
 
 ## Getting Started
 
