@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 
-export default function SettingsMenu({
+export default function Settings({
     speed,
     toggleSpeed,
     isMuted,

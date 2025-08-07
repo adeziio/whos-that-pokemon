@@ -15,9 +15,9 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { Audio } from 'expo-av';
 import { Ionicons } from '@expo/vector-icons';
-import { Region, CollectedData } from './types';
-import SettingsMenu from './SettingsMenu';
-import Back from './Back';
+import { Region, CollectedData } from '../configs/types';
+import Settings from '../components/Settings';
+import Back from '../components/Back';
 
 export default function Explore({
     region,
@@ -146,7 +146,7 @@ export default function Explore({
     const playSound = async (type: 'correct' | 'wrong') => {
         try {
             const { sound } = await Audio.Sound.createAsync(
-                type === 'correct' ? require('./assets/correct.mp3') : require('./assets/wrong.mp3'),
+                type === 'correct' ? require('./../assets/correct.mp3') : require('./../assets/wrong.mp3'),
                 { shouldPlay: true }
             );
             if (type === 'correct') Vibration.vibrate(50);
@@ -252,7 +252,7 @@ export default function Explore({
         <TouchableWithoutFeedback>
             <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
                 <Back onBack={onBack} />
-                <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
+                <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
 
                 <LinearGradient colors={['#ffe873', '#ffcb05']} style={styles.hud}>
                     <Text style={styles.hudScore}>Collected: {collectedCount} / {totalByGen[region]}</Text>

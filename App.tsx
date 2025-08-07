@@ -5,13 +5,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Font from 'expo-font';
 import { Audio } from 'expo-av';
 import { Ionicons } from '@expo/vector-icons';
-import Explore from './Explore';
-import Collection from './Collection';
-import { Region, RegionOrEmpty, CollectedData } from './types';
-import SettingsMenu from './SettingsMenu';
-import Back from './Back';
-import Pokeball from './Pokeball';
-import Masterball from './Masterball';
+import Explore from './pages/Explore';
+import Collection from './pages/Collection';
+import { Region, RegionOrEmpty, CollectedData } from './configs/types';
+import Settings from './components/Settings';
+import Back from './components/Back';
+import Pokeball from './components/Pokeball';
+import Masterball from './components/Masterball';
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -153,9 +153,9 @@ export default function App() {
   if (mode === 'menu') {
     return (
       <View style={styles.startScreen}>
+        <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
         <Text style={styles.startTitle}>Who's That</Text>
         <Text style={styles.startTitle}>Pokémon?</Text>
-        <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
         <View style={styles.pokeballRow}>
           <View style={{ alignItems: 'center' }}>
             <Pokeball onPress={() => { setMode('exploreRegion'); }} />
@@ -176,8 +176,9 @@ export default function App() {
     return (
       <View style={styles.startScreen}>
         <Back onBack={() => { setMode('menu'); }} />
-        <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
-        <Text style={styles.startTitle}>Select a Region</Text>
+        <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
+        <Text style={styles.startTitle}>Select a</Text>
+        <Text style={styles.startTitle}>Region</Text>
         <View style={styles.pokeballRow}>
           {(['Kanto', 'Johto', 'Hoenn'] as Region[]).map((gen) => (
             <View key={gen} style={{ alignItems: 'center' }}>

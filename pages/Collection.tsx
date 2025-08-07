@@ -12,9 +12,9 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Region, CollectedData } from './types';
-import SettingsMenu from './SettingsMenu';
-import Back from './Back';
+import { Region, CollectedData } from '../configs/types';
+import Settings from '../components/Settings';
+import Back from '../components/Back';
 
 const typeColors: Record<string, string> = {
     fire: '#F08030',
@@ -88,7 +88,7 @@ export default function Collection({
     return (
         <View style={styles.container}>
             <Back onBack={onBack} />
-            <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
+            <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
             <LinearGradient colors={['#ffe873', '#ffcb05']} style={styles.hud}>
                 <Text style={styles.hudTitle}>Collection - {region}</Text>
                 <Text style={styles.hudText}>{collectedIds.length} / {totalByGen[region]}</Text>
