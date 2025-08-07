@@ -16,7 +16,7 @@ It uses **Pokémon names, artwork, and music**, which are **intellectual propert
 - **Dynamic Music:** Different background tracks depending on the page.
 - **Persistent Progress:** Successfully identified Pokémons are stored in the Collection page per region using AsyncStorage, similar to a Pokédex. 
 - **Settings Menu:** In-game speed toggle and mute button.
-- **Animated UI:** Level-up animations, HUD updates, and shiny animated Pokéballs on the start screen.
+- **Animated UI:** Pokémon flash animations, HUD updates, and shiny animated Pokéballs on the start screen.
 
 ---
 
