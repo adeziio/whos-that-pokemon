@@ -44,7 +44,6 @@ export default function App() {
       setFontsLoaded(true);
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
       const stored = await AsyncStorage.getItem('collected');
-      await AsyncStorage.clear();
       if (stored) setCollected(JSON.parse(stored));
       const savedSpeed = await AsyncStorage.getItem('gameSpeed');
       if (savedSpeed) setSpeed(parseInt(savedSpeed) as 1 | 2 | 3);
