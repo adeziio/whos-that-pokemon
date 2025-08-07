@@ -185,14 +185,14 @@ export default function Explore({
         if (choice === pokemon.name) {
             await playSound('correct');
             setRevealed(true);
-            setResultText('Correct!');
-            setResultColor('green');
             triggerRevealAnimation();
 
             if (!collected[genKey].includes(pokemon.id)) {
                 const updated = { ...collected, [genKey]: [...collected[genKey], pokemon.id].sort((a, b) => a - b) };
                 setCollected(updated);
                 triggerCollectedAnimation();
+                setResultText('New!');
+                setResultColor('red');
             }
 
             setGameTime(30);
@@ -260,21 +260,6 @@ export default function Explore({
                         Time Left: {gameTime}s
                     </Animated.Text>
                 </LinearGradient>
-
-                {showNewCollected && (
-                    <Animated.Text
-                        style={[
-                            styles.levelUpText,
-                            {
-                                opacity: collectedAnim,
-                                transform: [{ scale: collectedAnim.interpolate({ inputRange: [0, 1], outputRange: [0.5, 1] }) }],
-                            },
-                        ]}
-                    >
-                        NEW!
-                    </Animated.Text>
-                )}
-
                 <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
                     {pokemon && (
                         <View style={{ position: 'relative', alignItems: 'center' }}>
