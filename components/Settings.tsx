@@ -9,11 +9,13 @@ export default function Settings({
     toggleSpeed,
     isMuted,
     toggleMute,
+    playClickSound
 }: {
     speed: 1 | 2 | 3;
     toggleSpeed: () => void;
     isMuted: boolean;
     toggleMute: () => void;
+    playClickSound: () => void;
 }) {
     const [open, setOpen] = useState(false);
     const anim = useRef(new Animated.Value(0)).current;
@@ -27,6 +29,9 @@ export default function Settings({
             friction: 6,
             tension: 60,
         }).start();
+        if (!isMuted) {
+            playClickSound();
+        }
     };
 
     const closeMenu = () => {

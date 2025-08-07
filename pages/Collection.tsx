@@ -45,6 +45,7 @@ export default function Collection({
     toggleSpeed,
     isMuted,
     toggleMute,
+    playClickSound
 }: {
     region: Region;
     collected: CollectedData;
@@ -53,6 +54,7 @@ export default function Collection({
     toggleSpeed: () => void;
     isMuted: boolean;
     toggleMute: () => void;
+    playClickSound: () => void;
 }) {
     const [selectedPokemon, setSelectedPokemon] = useState<number | null>(null);
     const [pokemonDetails, setPokemonDetails] = useState<any>(null);
@@ -88,7 +90,7 @@ export default function Collection({
     return (
         <View style={styles.container}>
             <Back onBack={onBack} />
-            <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
+            <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} playClickSound={playClickSound} />
             <LinearGradient colors={['#ffe873', '#ffcb05']} style={styles.hud}>
                 <Text style={styles.hudTitle}>Collection - {region}</Text>
                 <Text style={styles.hudText}>{collectedIds.length} / {totalByGen[region]}</Text>

@@ -38,6 +38,23 @@ export default function App() {
 
   const shuffleArray = (arr: any[]) => arr.sort(() => Math.random() - 0.5);
 
+  const playClickSound = async () => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        require('./assets/sound/click.mp3'),
+        { shouldPlay: true }
+      );
+
+      sound.setOnPlaybackStatusUpdate((status) => {
+        if (status.isLoaded && status.didJustFinish) {
+          sound.unloadAsync();
+        }
+      });
+    } catch (error) {
+      console.error('Error playing click sound:', error);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       await Font.loadAsync({ Pokemon: require('./assets/fonts/PokemonSolid.ttf') });
@@ -137,6 +154,9 @@ export default function App() {
     setSpeed(prev => {
       const next = prev === 1 ? 2 : prev === 2 ? 3 : 1;
       AsyncStorage.setItem('gameSpeed', next.toString());
+      if (!isMuted) {
+        playClickSound();
+      }
       return next;
     });
   };
@@ -151,16 +171,16 @@ export default function App() {
   if (mode === 'menu') {
     return (
       <View style={styles.startScreen}>
-        <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
+        <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} playClickSound={playClickSound} />
         <Text style={styles.startTitle}>Who's That</Text>
         <Text style={styles.startTitle}>Pokémon?</Text>
         <View style={styles.pokeballRow}>
           <View style={{ alignItems: 'center' }}>
-            <Pokeball onPress={() => { setMode('exploreRegion'); }} />
+            <Pokeball onPress={() => { setMode('exploreRegion'); !isMuted && playClickSound(); }} />
             <Text style={styles.regionLabel}>Explore</Text>
           </View>
           <View style={{ alignItems: 'center' }}>
-            <Masterball onPress={() => { setMode('collectionRegion'); }} />
+            <Masterball onPress={() => { setMode('collectionRegion'); !isMuted && playClickSound(); }} />
             <Text style={styles.regionLabel}>Collection</Text>
           </View>
         </View>
@@ -173,8 +193,8 @@ export default function App() {
     const isExplore = mode === 'exploreRegion';
     return (
       <View style={styles.startScreen}>
-        <Back onBack={() => { setMode('menu'); }} />
-        <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
+        <Back onBack={() => { setMode('menu'); !isMuted && playClickSound(); }} />
+        <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} playClickSound={playClickSound} />
         <Text style={styles.startTitle}>Select a</Text>
         <Text style={styles.startTitle}>Region</Text>
         <View style={styles.pokeballRow}>
@@ -183,6 +203,7 @@ export default function App() {
               <Pokeball onPress={() => {
                 setRegion(gen);
                 setMode(isExplore ? 'explore' : 'collection');
+                !isMuted && playClickSound();
               }} />
               <Text style={styles.regionLabel}>{gen}</Text>
               <Text style={styles.ratioLabel}>
@@ -202,8 +223,8 @@ export default function App() {
         region={region as Region}
         collected={collected}
         setCollected={saveCollected}
-        onBack={() => { playStartScreenMusic(); setMode('exploreRegion'); }}
-        onHome={() => { playStartScreenMusic(); setMode('menu'); }}
+        onBack={() => { playStartScreenMusic(); setMode('exploreRegion'); !isMuted && playClickSound(); }}
+        onHome={() => { playStartScreenMusic(); setMode('menu'); !isMuted && playClickSound(); }}
         toggleMute={toggleMute}
         isMuted={isMuted}
         stopMusic={stopBackgroundMusic}
@@ -211,6 +232,7 @@ export default function App() {
         playGameOverMusic={playGameOverMusic}
         speed={speed}
         toggleSpeed={toggleSpeed}
+        playClickSound={playClickSound}
       />
     );
   }
@@ -221,11 +243,12 @@ export default function App() {
       <Collection
         region={region as Region}
         collected={collected}
-        onBack={() => { setMode('collectionRegion'); }}
+        onBack={() => { setMode('collectionRegion'); !isMuted && playClickSound(); }}
         speed={speed}
         toggleSpeed={toggleSpeed}
         isMuted={isMuted}
         toggleMute={toggleMute}
+        playClickSound={playClickSound}
       />
     );
   }

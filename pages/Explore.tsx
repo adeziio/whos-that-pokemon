@@ -31,6 +31,7 @@ export default function Explore({
     playGameOverMusic,
     speed,
     toggleSpeed,
+    playClickSound
 }: {
     region: Region;
     collected: CollectedData;
@@ -44,6 +45,7 @@ export default function Explore({
     playGameOverMusic: () => Promise<void>;
     speed: 1 | 2 | 3;
     toggleSpeed: () => void;
+    playClickSound: () => void;
 }) {
     const [pokemon, setPokemon] = useState<{ id: number; name: string; image: string } | null>(null);
     const [options, setOptions] = useState<string[]>([]);
@@ -143,17 +145,19 @@ export default function Explore({
     }, [gameTime]);
 
     const playSound = async (type: 'correct' | 'wrong') => {
-        try {
-            const { sound } = await Audio.Sound.createAsync(
-                type === 'correct' ? require('./../assets/correct.mp3') : require('./../assets/wrong.mp3'),
-                { shouldPlay: true }
-            );
-            if (type === 'correct') Vibration.vibrate(50);
-            else Vibration.vibrate([0, 200]);
-            sound.setOnPlaybackStatusUpdate((status) => {
-                if (status.isLoaded && status.didJustFinish) sound.unloadAsync();
-            });
-        } catch { }
+        if (!isMuted) {
+            try {
+                const { sound } = await Audio.Sound.createAsync(
+                    type === 'correct' ? require('./../assets/sound/correct.mp3') : require('./../assets/sound/wrong.mp3'),
+                    { shouldPlay: true }
+                );
+                if (type === 'correct') Vibration.vibrate(50);
+                else Vibration.vibrate([0, 200]);
+                sound.setOnPlaybackStatusUpdate((status) => {
+                    if (status.isLoaded && status.didJustFinish) sound.unloadAsync();
+                });
+            } catch { }
+        }
     };
 
     const triggerRevealAnimation = () => {
@@ -251,8 +255,7 @@ export default function Explore({
         <TouchableWithoutFeedback>
             <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
                 <Back onBack={onBack} />
-                <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
-
+                <Settings speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} playClickSound={playClickSound} />
                 <LinearGradient colors={['#ffe873', '#ffcb05']} style={styles.hud}>
                     <Text style={styles.hudScore}>Collected: {collectedCount} / {totalByGen[region]}</Text>
                     <Text style={styles.hudRegion}>Region: {region}</Text>
