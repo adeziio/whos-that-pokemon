@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Difficulty, CollectedData } from './types';
+import { Region, CollectedData } from './types';
 import SettingsMenu from './SettingsMenu';
 import Back from './Back';
 
@@ -38,7 +38,7 @@ const typeColors: Record<string, string> = {
 };
 
 export default function Collection({
-    difficulty,
+    region,
     collected,
     onBack,
     speed,
@@ -46,7 +46,7 @@ export default function Collection({
     isMuted,
     toggleMute,
 }: {
-    difficulty: Difficulty;
+    region: Region;
     collected: CollectedData;
     onBack: () => void;
     speed: 1 | 2 | 3;
@@ -58,8 +58,8 @@ export default function Collection({
     const [pokemonDetails, setPokemonDetails] = useState<any>(null);
     const [loading, setLoading] = useState(false);
 
-    const totalByGen: Record<Difficulty, number> = { Gen1: 151, Gen2: 100, Gen3: 135 };
-    const genKey = difficulty === 'Gen1' ? 'gen1' : difficulty === 'Gen2' ? 'gen2' : 'gen3';
+    const totalByGen: Record<Region, number> = { Kanto: 151, Johto: 100, Hoenn: 135 };
+    const genKey = region === 'Kanto' ? 'kanto' : region === 'Johto' ? 'johto' : 'hoenn';
     const collectedIds = collected[genKey];
 
     const fetchDetails = async (id: number) => {
@@ -90,13 +90,13 @@ export default function Collection({
             <Back onBack={onBack} />
             <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
             <LinearGradient colors={['#ffe873', '#ffcb05']} style={styles.hud}>
-                <Text style={styles.hudTitle}>Collection - {difficulty}</Text>
-                <Text style={styles.hudText}>{collectedIds.length} / {totalByGen[difficulty]}</Text>
+                <Text style={styles.hudTitle}>Collection - {region}</Text>
+                <Text style={styles.hudText}>{collectedIds.length} / {totalByGen[region]}</Text>
             </LinearGradient>
 
             <ScrollView contentContainerStyle={styles.grid}>
-                {Array.from({ length: totalByGen[difficulty] }, (_, idx) => {
-                    const id = (difficulty === 'Gen1' ? 1 : difficulty === 'Gen2' ? 152 : 252) + idx;
+                {Array.from({ length: totalByGen[region] }, (_, idx) => {
+                    const id = (region === 'Kanto' ? 1 : region === 'Johto' ? 152 : 252) + idx;
                     const isCollected = collectedIds.includes(id);
                     return (
                         <TouchableOpacity key={id} style={styles.card} onPress={() => isCollected && handleSelect(id)}>

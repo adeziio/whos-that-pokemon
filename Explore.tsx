@@ -15,12 +15,12 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { Audio } from 'expo-av';
 import { Ionicons } from '@expo/vector-icons';
-import { Difficulty, CollectedData } from './types';
+import { Region, CollectedData } from './types';
 import SettingsMenu from './SettingsMenu';
 import Back from './Back';
 
 export default function Explore({
-    difficulty,
+    region,
     collected,
     setCollected,
     onBack,
@@ -33,7 +33,7 @@ export default function Explore({
     speed,
     toggleSpeed,
 }: {
-    difficulty: Difficulty;
+    region: Region;
     collected: CollectedData;
     setCollected: (data: CollectedData) => void;
     onBack: () => void;
@@ -63,15 +63,15 @@ export default function Explore({
     const resultTextAnim = useRef(new Animated.Value(0)).current;
     const collectedAnim = useRef(new Animated.Value(0)).current;
 
-    const totalByGen: Record<Difficulty, number> = { Gen1: 151, Gen2: 100, Gen3: 135 };
-    const collectedCount = difficulty === 'Gen1' ? collected.gen1.length : difficulty === 'Gen2' ? collected.gen2.length : collected.gen3.length;
-    const genKey = difficulty === 'Gen1' ? 'gen1' : difficulty === 'Gen2' ? 'gen2' : 'gen3';
+    const totalByGen: Record<Region, number> = { Kanto: 151, Johto: 100, Hoenn: 135 };
+    const collectedCount = region === 'Kanto' ? collected.kanto.length : region === 'Johto' ? collected.johto.length : collected.hoenn.length;
+    const genKey = region === 'Kanto' ? 'kanto' : region === 'Johto' ? 'johto' : 'hoenn';
 
     const getPokemonRange = () => {
-        switch (difficulty) {
-            case 'Gen1': return [1, 151];
-            case 'Gen2': return [152, 251];
-            case 'Gen3': return [252, 386];
+        switch (region) {
+            case 'Kanto': return [1, 151];
+            case 'Johto': return [152, 251];
+            case 'Hoenn': return [252, 386];
         }
     };
 
@@ -236,8 +236,8 @@ export default function Explore({
             <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
                 <ScrollView contentContainerStyle={styles.container}>
                     <LinearGradient colors={['#ffe873', '#ffcb05']} style={styles.hud}>
-                        <Text style={styles.hudScore}>Collected: {collectedCount} / {totalByGen[difficulty]}</Text>
-                        <Text style={styles.hudDifficulty}>Difficulty: {difficulty}</Text>
+                        <Text style={styles.hudScore}>Collected: {collectedCount} / {totalByGen[region]}</Text>
+                        <Text style={styles.hudRegion}>Region: {region}</Text>
                     </LinearGradient>
                     <Text style={styles.title}>Game Over!</Text>
                     {pokemon && (<><Image source={{ uri: pokemon.image }} style={styles.image} /><Text style={styles.pokemonName}>{pokemon.name.toUpperCase()}</Text></>)}
@@ -255,8 +255,8 @@ export default function Explore({
                 <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
 
                 <LinearGradient colors={['#ffe873', '#ffcb05']} style={styles.hud}>
-                    <Text style={styles.hudScore}>Collected: {collectedCount} / {totalByGen[difficulty]}</Text>
-                    <Text style={styles.hudDifficulty}>Difficulty: {difficulty}</Text>
+                    <Text style={styles.hudScore}>Collected: {collectedCount} / {totalByGen[region]}</Text>
+                    <Text style={styles.hudRegion}>Region: {region}</Text>
                     <Animated.Text style={[styles.hudTimer, { opacity: blinkAnim }]}>
                         Time Left: {gameTime}s
                     </Animated.Text>
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
     hud: { position: 'absolute', top: 80, alignSelf: 'center', paddingVertical: 8, paddingHorizontal: 20, borderRadius: 25, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.3, shadowRadius: 3, elevation: 5, zIndex: 10, alignItems: 'center' },
     backButton: { position: 'absolute', top: 40, left: 20, zIndex: 20 },
     hudScore: { fontSize: 22, fontWeight: 'bold', color: '#3b4cca' },
-    hudDifficulty: { fontSize: 18, fontWeight: 'bold', color: '#3b4cca', marginTop: 4 },
+    hudRegion: { fontSize: 18, fontWeight: 'bold', color: '#3b4cca', marginTop: 4 },
     hudTimer: { fontSize: 18, fontWeight: 'bold', color: 'red', marginTop: 4 },
     levelUpText: { position: 'absolute', top: 200, alignSelf: 'center', fontSize: 32, fontWeight: 'bold', color: '#ff0000', textShadowColor: '#fff', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 3, zIndex: 25 },
     image: { width: 250, height: 250, marginBottom: 10, resizeMode: 'contain' },

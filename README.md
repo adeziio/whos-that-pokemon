@@ -11,10 +11,10 @@ It uses **Pokémon names, artwork, and music**, which are **intellectual propert
 
 ## Features
 - **Guess the Pokémon:** Silhouette guessing game with multiple-choice answers.
-- **Difficulty Modes:** Easy, Medium, Hard, Master — each with separate high scores.
+- **Region Modes:** Kanto, Johto, Hoenn — each with separate Pokémons.
 - **Countdown Timer:** 30-second countdown with urgency effects; resets after correct guesses.
-- **Dynamic Music:** Different background tracks for each difficulty and for game over.
-- **Persistent Progress:** High scores stored per difficulty using AsyncStorage.
+- **Dynamic Music:** Different background tracks depending on the page.
+- **Persistent Progress:** Successfully identified Pokémons are stored in the Collection page per region using AsyncStorage, similar to a Pokédex. 
 - **Settings Menu:** In-game speed toggle and mute button.
 - **Animated UI:** Level-up animations, HUD updates, and shiny animated Pokéballs on the start screen.
 

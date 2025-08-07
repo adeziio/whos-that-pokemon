@@ -1,8 +1,8 @@
-export type Difficulty = 'Gen1' | 'Gen2' | 'Gen3';
-export type DifficultyOrEmpty = Difficulty | '';
+export type Region = 'Kanto' | 'Johto' | 'Hoenn';
+export type RegionOrEmpty = Region | '';
 
 export type CollectedData = {
-    gen1: number[];
-    gen2: number[];
-    gen3: number[];
+    kanto: number[];
+    johto: number[];
+    hoenn: number[];
 };

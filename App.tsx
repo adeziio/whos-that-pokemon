@@ -7,21 +7,21 @@ import { Audio } from 'expo-av';
 import { Ionicons } from '@expo/vector-icons';
 import Explore from './Explore';
 import Collection from './Collection';
-import { Difficulty, DifficultyOrEmpty, CollectedData } from './types';
+import { Region, RegionOrEmpty, CollectedData } from './types';
 import SettingsMenu from './SettingsMenu';
 import Back from './Back';
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
-  const [mode, setMode] = useState<'menu' | 'genSelectExplore' | 'genSelectCollection' | 'explore' | 'collection'>('menu');
-  const [difficulty, setDifficulty] = useState<DifficultyOrEmpty>('');
-  const [collected, setCollected] = useState<CollectedData>({ gen1: [], gen2: [], gen3: [] });
+  const [mode, setMode] = useState<'menu' | 'exploreRegion' | 'collectionRegion' | 'explore' | 'collection'>('menu');
+  const [region, setRegion] = useState<RegionOrEmpty>('');
+  const [collected, setCollected] = useState<CollectedData>({ kanto: [], johto: [], hoenn: [] });
   const [bgMusic, setBgMusic] = useState<Audio.Sound | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [speed, setSpeed] = useState<1 | 2 | 3>(1);
   const musicIdRef = useRef(0);
 
-  const totalByGen: Record<Difficulty, number> = { Gen1: 151, Gen2: 100, Gen3: 135 };
+  const totalByGen: Record<Region, number> = { Kanto: 151, Johto: 100, Hoenn: 135 };
 
   // --- Dedicated Tracks ---
   const startScreenTrack = require('./assets/music/Opening.mp3');
@@ -44,6 +44,7 @@ export default function App() {
       setFontsLoaded(true);
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
       const stored = await AsyncStorage.getItem('collected');
+      await AsyncStorage.clear();
       if (stored) setCollected(JSON.parse(stored));
       const savedSpeed = await AsyncStorage.getItem('gameSpeed');
       if (savedSpeed) setSpeed(parseInt(savedSpeed) as 1 | 2 | 3);
@@ -141,7 +142,7 @@ export default function App() {
     });
   };
 
-  const collectedCount = (gen: Difficulty) => gen === 'Gen1' ? collected.gen1.length : gen === 'Gen2' ? collected.gen2.length : collected.gen3.length;
+  const collectedCount = (gen: Region) => gen === 'Kanto' ? collected.kanto.length : gen === 'Johto' ? collected.johto.length : collected.hoenn.length;
 
   if (!fontsLoaded) {
     return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#3b4cca' }}><ActivityIndicator size="large" color="#ffcb05" /></View>;
@@ -156,41 +157,41 @@ export default function App() {
         <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
         <View style={styles.pokeballRow}>
           <View style={{ alignItems: 'center' }}>
-            <TouchableOpacity style={styles.playButton} onPress={() => { setMode('genSelectExplore'); }}>
+            <TouchableOpacity style={styles.playButton} onPress={() => { setMode('exploreRegion'); }}>
               <LinearGradient colors={['#ff5e5e', '#cc0000']} style={styles.pokeballTop} />
               <LinearGradient colors={['#ffffff', '#e6e6e6']} style={styles.pokeballBottom} />
               <View style={styles.pokeballButton} />
             </TouchableOpacity>
-            <Text style={styles.difficultyLabel}>Explore</Text>
+            <Text style={styles.regionLabel}>Explore</Text>
           </View>
           <View style={{ alignItems: 'center' }}>
-            <TouchableOpacity style={styles.playButton} onPress={() => setMode('genSelectCollection')}>
+            <TouchableOpacity style={styles.playButton} onPress={() => setMode('collectionRegion')}>
               <LinearGradient colors={['#b566d4', '#a040a0']} style={styles.pokeballTop} />
               <LinearGradient colors={['#ffffff', '#e6e6e6']} style={styles.pokeballBottom} />
               <View style={styles.pokeballButton} />
             </TouchableOpacity>
-            <Text style={styles.difficultyLabel}>Collection</Text>
+            <Text style={styles.regionLabel}>Collection</Text>
           </View>
         </View>
       </View>
     );
   }
 
-  // GENERATION SELECT
-  if (mode === 'genSelectExplore' || mode === 'genSelectCollection') {
-    const isExplore = mode === 'genSelectExplore';
+  // REGION SELECT
+  if (mode === 'exploreRegion' || mode === 'collectionRegion') {
+    const isExplore = mode === 'exploreRegion';
     return (
       <View style={styles.startScreen}>
         <Back onBack={() => { setMode('menu'); }} />
         <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
-        <Text style={styles.startTitle}>Select Generation</Text>
+        <Text style={styles.startTitle}>Select a Region</Text>
         <View style={styles.pokeballRow}>
-          {(['Gen1', 'Gen2', 'Gen3'] as Difficulty[]).map((gen) => (
+          {(['Kanto', 'Johto', 'Hoenn'] as Region[]).map((gen) => (
             <View key={gen} style={{ alignItems: 'center' }}>
               <TouchableOpacity
                 style={styles.playButton}
                 onPress={() => {
-                  setDifficulty(gen);
+                  setRegion(gen);
                   setMode(isExplore ? 'explore' : 'collection');
                 }}
               >
@@ -198,7 +199,7 @@ export default function App() {
                 <LinearGradient colors={['#ffffff', '#e6e6e6']} style={styles.pokeballBottom} />
                 <View style={styles.pokeballButton} />
               </TouchableOpacity>
-              <Text style={styles.difficultyLabel}>{gen}</Text>
+              <Text style={styles.regionLabel}>{gen}</Text>
               <Text style={styles.ratioLabel}>
                 {collectedCount(gen)} / {totalByGen[gen]}
               </Text>
@@ -210,13 +211,13 @@ export default function App() {
   }
 
   // EXPLORE MODE
-  if (mode === 'explore' && difficulty) {
+  if (mode === 'explore' && region) {
     return (
       <Explore
-        difficulty={difficulty as Difficulty}
+        region={region as Region}
         collected={collected}
         setCollected={saveCollected}
-        onBack={() => { playStartScreenMusic(); setMode('genSelectExplore'); }}
+        onBack={() => { playStartScreenMusic(); setMode('exploreRegion'); }}
         onHome={() => { playStartScreenMusic(); setMode('menu'); }}
         toggleMute={toggleMute}
         isMuted={isMuted}
@@ -230,12 +231,12 @@ export default function App() {
   }
 
   // COLLECTION MODE
-  if (mode === 'collection' && difficulty) {
+  if (mode === 'collection' && region) {
     return (
       <Collection
-        difficulty={difficulty as Difficulty}
+        region={region as Region}
         collected={collected}
-        onBack={() => { setMode('genSelectCollection'); }}
+        onBack={() => { setMode('collectionRegion'); }}
         speed={speed}
         toggleSpeed={toggleSpeed}
         isMuted={isMuted}
@@ -255,7 +256,7 @@ const styles = StyleSheet.create({
   pokeballTop: { height: '50%', width: '100%' },
   pokeballBottom: { height: '50%', width: '100%' },
   pokeballButton: { position: 'absolute', width: 24, height: 24, borderRadius: 12, backgroundColor: '#fff', borderWidth: 3, borderColor: '#000' },
-  difficultyLabel: { marginTop: 6, fontSize: 14, fontWeight: 'bold', color: '#fff' },
+  regionLabel: { marginTop: 6, fontSize: 14, fontWeight: 'bold', color: '#fff' },
   ratioLabel: { fontSize: 12, color: '#fff', marginTop: 2 },
   backButton: { position: 'absolute', top: 40, left: 20, zIndex: 20 },
 });
