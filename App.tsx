@@ -10,6 +10,8 @@ import Collection from './Collection';
 import { Region, RegionOrEmpty, CollectedData } from './types';
 import SettingsMenu from './SettingsMenu';
 import Back from './Back';
+import Pokeball from './Pokeball';
+import Masterball from './Masterball';
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -156,19 +158,11 @@ export default function App() {
         <SettingsMenu speed={speed} toggleSpeed={toggleSpeed} isMuted={isMuted} toggleMute={toggleMute} />
         <View style={styles.pokeballRow}>
           <View style={{ alignItems: 'center' }}>
-            <TouchableOpacity style={styles.playButton} onPress={() => { setMode('exploreRegion'); }}>
-              <LinearGradient colors={['#ff5e5e', '#cc0000']} style={styles.pokeballTop} />
-              <LinearGradient colors={['#ffffff', '#e6e6e6']} style={styles.pokeballBottom} />
-              <View style={styles.pokeballButton} />
-            </TouchableOpacity>
+            <Pokeball onPress={() => { setMode('exploreRegion'); }} />
             <Text style={styles.regionLabel}>Explore</Text>
           </View>
           <View style={{ alignItems: 'center' }}>
-            <TouchableOpacity style={styles.playButton} onPress={() => setMode('collectionRegion')}>
-              <LinearGradient colors={['#b566d4', '#a040a0']} style={styles.pokeballTop} />
-              <LinearGradient colors={['#ffffff', '#e6e6e6']} style={styles.pokeballBottom} />
-              <View style={styles.pokeballButton} />
-            </TouchableOpacity>
+            <Masterball onPress={() => { setMode('collectionRegion'); }} />
             <Text style={styles.regionLabel}>Collection</Text>
           </View>
         </View>
@@ -187,17 +181,10 @@ export default function App() {
         <View style={styles.pokeballRow}>
           {(['Kanto', 'Johto', 'Hoenn'] as Region[]).map((gen) => (
             <View key={gen} style={{ alignItems: 'center' }}>
-              <TouchableOpacity
-                style={styles.playButton}
-                onPress={() => {
-                  setRegion(gen);
-                  setMode(isExplore ? 'explore' : 'collection');
-                }}
-              >
-                <LinearGradient colors={['#ff5e5e', '#cc0000']} style={styles.pokeballTop} />
-                <LinearGradient colors={['#ffffff', '#e6e6e6']} style={styles.pokeballBottom} />
-                <View style={styles.pokeballButton} />
-              </TouchableOpacity>
+              <Pokeball onPress={() => {
+                setRegion(gen);
+                setMode(isExplore ? 'explore' : 'collection');
+              }} />
               <Text style={styles.regionLabel}>{gen}</Text>
               <Text style={styles.ratioLabel}>
                 {collectedCount(gen)} / {totalByGen[gen]}

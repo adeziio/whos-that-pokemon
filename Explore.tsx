@@ -290,7 +290,7 @@ export default function Explore({
                     {revealed && (
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                             <Text style={styles.pokemonName}>{pokemon?.name.toUpperCase()}</Text>
-                            {pokemon && isCollected(pokemon.id) && <Ionicons name="checkmark-circle" size={24} color="#3b4cca" style={{ marginLeft: 8 }} />}
+                            {pokemon && isCollected(pokemon.id)}
                         </View>
                     )}
                     {!revealed && (
