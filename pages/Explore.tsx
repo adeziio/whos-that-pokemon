@@ -14,7 +14,6 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Audio } from 'expo-av';
-import { Ionicons } from '@expo/vector-icons';
 import { Region, CollectedData } from '../configs/types';
 import Settings from '../components/Settings';
 import Back from '../components/Back';

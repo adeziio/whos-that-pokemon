@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Font from 'expo-font';
 import { Audio } from 'expo-av';
-import { Ionicons } from '@expo/vector-icons';
 import Explore from './pages/Explore';
 import Collection from './pages/Collection';
 import { Region, RegionOrEmpty, CollectedData } from './configs/types';
